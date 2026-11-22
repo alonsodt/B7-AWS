@@ -64,8 +64,9 @@ Leyenda: ⬜ pendiente · 🟡 en curso · ✅ hecho · ❓ falta decidir
 |---|---|---|---|---|
 | 0 | Organización | Crear repo, CLAUDE.md, ESTADO.md, estructura | | ✅ |
 | 0 | Organización | Medidas de seguridad para repo público (`.gitignore`, gitleaks, guía) | Alonso | ✅ |
-| 0 | Organización | Subir a GitHub (**público**), invitar a Pietro y Raúl | Alonso | ⬜ |
-| 0 | Organización | Activar push protection y proteger `main` ([pasos manuales §C](docs/pasos-manuales.md#c-github-lo-hace-quien-cree-el-repo)) | | ⬜ |
+| 0 | Organización | Subir a GitHub (**público**): https://github.com/alonsodt/B7-AWS | Alonso | ✅ |
+| 0 | Organización | Invitar a Pietro y Raúl como colaboradores | Alonso | ⬜ |
+| 0 | Organización | Proteger `main` (push protection y secret scanning ya activos ✅) ([pasos manuales §C](docs/pasos-manuales.md#c-github-lo-hace-quien-cree-el-repo)) | | ⬜ |
 | 0 | Organización | Cada uno: email *noreply* en Git y herramientas instaladas ([§A](docs/pasos-manuales.md#a-preparar-el-ordenador-de-cada-integrante-cada-uno-una-vez)) | Todos | ⬜ |
 | 0 | Organización | Decidir el reparto (A/B/C) | Todos | ⬜ |
 | 0 | AWS | Alerta de presupuesto + acceso al modelo de Bedrock ([§B](docs/pasos-manuales.md#b-aws-lo-hace-una-persona-en-la-cuenta-que-usemos)) | | ⬜ |
@@ -118,6 +119,9 @@ Leyenda: ⬜ pendiente · 🟡 en curso · ✅ hecho · ❓ falta decidir
 ## Bitácora
 
 _Lo más nuevo arriba. Formato: `AAAA-MM-DD · persona · qué se hizo → qué queda`._
+
+- 2026-11-22 · Alonso · Repo publicado en https://github.com/alonsodt/B7-AWS (público). Workflow `secretos` en verde (4 commits revisados, sin fugas).
+  → Queda: invitar a Pietro y Raúl, proteger `main`, pasos manuales de AWS, decidir reparto.
 
 - 2026-11-22 · Alonso · Integrantes: Alonso, Pietro y Raúl. El repo será **público** → añadidos `docs/seguridad.md`,
   `docs/pasos-manuales.md`, workflow `secretos.yml` (gitleaks), `.gitignore` ampliado a datos, normas de seguridad en `CLAUDE.md`.
