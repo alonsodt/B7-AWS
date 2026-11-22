@@ -1,0 +1,45 @@
+# =============================================================
+# .gitignore — ficheros que Git NO debe subir al repositorio
+# =============================================================
+
+# --- Credenciales y configuración local (¡regla del enunciado!) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+.aws/
+
+# --- Terraform: estado y variables (pueden contener secretos) ---
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+.terraform.lock.hcl.bak
+
+# --- Datos: los PDF y manifiestos van a S3, no a Git ---
+datos/
+*.pdf
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+build/
+dist/
+*.zip
+
+# --- Editores y sistema ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Configuración local de Claude Code (personal de cada uno) ---
+.claude/settings.local.json

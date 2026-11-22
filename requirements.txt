@@ -1,0 +1,13 @@
+# Dependencias para trabajar en LOCAL (scraper, extracción, pruebas).
+# La API y la app tendrán su propio requirements.txt dentro de su carpeta,
+# porque se empaquetan por separado (Lambda y contenedor).
+#
+# Instalar:  pip install -r requirements.txt
+
+requests>=2.32          # descargar páginas web y PDF
+beautifulsoup4>=4.12    # leer el HTML y encontrar los enlaces a los KID
+boto3>=1.35             # SDK de AWS para Python (S3, Bedrock, RDS Data API)
+jsonschema>=4.23        # validar en Python la respuesta del modelo contra el esquema
+python-dotenv>=1.0      # cargar las variables del fichero .env
+pandas>=2.2             # analizar resultados (tablas, estadísticas)
+pytest>=8.0             # tests
