@@ -7,9 +7,9 @@ Práctica B7 · Módulo Cloud · Máster
 
 ## Integrantes
 
-- _(nombre y apellidos)_
-- _(nombre y apellidos)_
-- _(nombre y apellidos)_
+- Alonso _(apellidos)_
+- Pietro _(apellidos)_
+- Raúl _(apellidos)_
 
 ## URLs
 
@@ -45,6 +45,11 @@ Resumen aquí; detalle y justificación en [docs/decisiones.md](docs/decisiones.
 
 - _pendiente_
 
+## Seguridad
+
+El repositorio es público: no contiene credenciales ni datos. GitHub Actions accede a AWS mediante OIDC
+(credenciales temporales) y un workflow con gitleaks revisa cada cambio. Detalle en [docs/seguridad.md](docs/seguridad.md).
+
 ## Cómo desplegar
 
 _pendiente — se completará tras los talleres 1 y 2._
@@ -65,7 +70,7 @@ Ver [docs/resultados.md](docs/resultados.md).
 ```
 ├── CLAUDE.md            Normas para trabajar en el repo (personas y asistentes de IA)
 ├── ESTADO.md            Estado, reparto, decisiones pendientes y bitácora
-├── docs/                Enunciado resumido, arquitectura, decisiones, glosario, resultados
+├── docs/                Enunciado, arquitectura, decisiones, glosario, resultados, seguridad, pasos manuales
 ├── scraper/             Captura de KIDs → S3 + manifiesto
 ├── extraccion/          Extracción con Bedrock (esquema del Anexo A)
 ├── base_datos/          Esquema SQL y carga

@@ -9,6 +9,16 @@ que no estaba en la conversación.
 
 ---
 
+## D-005 · Repositorio público con defensa en capas contra fugas de secretos · 2026-11-22 · _decidida_
+
+- **Contexto:** el profesor tiene que ver el repositorio, así que será **público**. Cualquiera puede leer el código y
+  todo su historial, y hay robots que buscan claves de AWS en GitHub.
+- **Decisión:** (1) OIDC para GitHub Actions, sin claves permanentes; (2) `.gitignore` que excluye credenciales, estado de
+  Terraform y datos; (3) push protection de GitHub; (4) workflow `secretos.yml` con gitleaks en cada push/PR;
+  (5) commits con el email *noreply* de GitHub. Detalle en [seguridad.md](seguridad.md).
+- **Por qué:** una sola medida puede fallar (un `git add -f`, una clave pegada en un `.py`); varias juntas hacen muy difícil
+  que una fuga pase desapercibida. Además, el workflow de gitleaks cuenta como «validaciones en el pipeline de GitHub» (ampliación).
+
 ## D-004 · Todos los campos del esquema admiten `null` · 2026-11-22 · _propuesta_
 
 - **Contexto:** el Anexo A exige que, si un dato no aparece, quede vacío y el modelo no lo invente.

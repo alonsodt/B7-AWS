@@ -1,15 +1,19 @@
 # ESTADO del proyecto
 
-> **Última actualización:** 2026-11-22 · **por:** _(nombre)_
+> **Última actualización:** 2026-11-22 · **por:** Alonso
 >
 > Este fichero es el «tablero» del grupo. Léelo antes de empezar y actualízalo al terminar
-> (instrucciones en [CLAUDE.md §7](CLAUDE.md#7-al-terminar-una-tarea--actualiza-estadomd)).
+> (instrucciones en [CLAUDE.md §8](CLAUDE.md#8-al-terminar-una-tarea--actualiza-estadomd)).
 
 ## En una frase
 
-Repositorio creado con la estructura, las normas de trabajo y los borradores del esquema de datos.
-**Todavía no hay código del pipeline ni nada desplegado en AWS.** Siguiente paso: inspeccionar las webs
-y montar la conexión GitHub ↔ AWS (contenido del taller 1).
+Repositorio creado con la estructura, las normas de trabajo, las medidas de seguridad para repo público
+y los borradores del esquema de datos. **Todavía no hay código del pipeline ni nada desplegado en AWS.**
+Siguiente paso: subir el repo (público), hacer los pasos manuales de AWS/GitHub
+([docs/pasos-manuales.md](docs/pasos-manuales.md)) e inspeccionar las webs.
+
+> ⚠️ **El repositorio es PÚBLICO** (lo tiene que ver el profesor). Antes de tu primer commit lee
+> [docs/seguridad.md](docs/seguridad.md): nada de claves, `.env`, `*.tfstate` ni datos de los KID en Git.
 
 ## Fechas clave
 
@@ -24,16 +28,17 @@ y montar la conexión GitHub ↔ AWS (contenido del taller 1).
 
 | Persona | Usuario GitHub | Parte principal | Revisa a |
 |---|---|---|---|
-| _(nombre)_ | | | |
-| _(nombre)_ | | | |
-| _(nombre)_ | | | |
+| Alonso | `alonsodt` | _por decidir (A, B o C)_ | _por decidir_ |
+| Pietro | _pendiente_ | _por decidir_ | _por decidir_ |
+| Raúl | _pendiente_ | _por decidir_ | _por decidir_ |
 
-**Propuesta de reparto por capas** (ajustar al tamaño del grupo):
+**Propuesta de reparto por capas** para 3 personas (cada bloque toca un trozo de Terraform, así nadie se queda sin aprender infraestructura):
 
-- **A · Captura:** scrapers de las gestoras + subida a S3 + manifiesto.
-- **B · Extracción IA:** script de Bedrock + validación + evaluación de calidad.
-- **C · Datos y API:** esquema SQL + carga sin duplicados + FastAPI en Lambda.
-- **D · App e infraestructura:** Streamlit + Terraform + GitHub Actions.
+- **A · Captura + base:** scrapers de las gestoras, subida a S3, manifiesto + Terraform de S3/Aurora y bootstrap OIDC (taller 1).
+- **B · Extracción IA + datos:** script de Bedrock, validación, evaluación de calidad, esquema SQL y carga sin duplicados.
+- **C · API + app + despliegue:** FastAPI en Lambda, Streamlit en ECS, workflows de GitHub Actions.
+
+Revisión cruzada de pull requests en rueda: A revisa a B, B revisa a C, C revisa a A.
 
 Aunque cada uno lleve una parte, **todos tenemos que entender todas** (nos pueden preguntar cualquier cosa).
 Por eso cada PR lo revisa alguien de otra parte.
@@ -58,8 +63,12 @@ Leyenda: ⬜ pendiente · 🟡 en curso · ✅ hecho · ❓ falta decidir
 | # | Fase | Tarea | Responsable | Estado |
 |---|---|---|---|---|
 | 0 | Organización | Crear repo, CLAUDE.md, ESTADO.md, estructura | | ✅ |
-| 0 | Organización | Subir a GitHub, invitar al grupo y al profesor | | ⬜ |
-| 0 | Organización | Rellenar integrantes y reparto | | ⬜ |
+| 0 | Organización | Medidas de seguridad para repo público (`.gitignore`, gitleaks, guía) | Alonso | ✅ |
+| 0 | Organización | Subir a GitHub (**público**), invitar a Pietro y Raúl | Alonso | ⬜ |
+| 0 | Organización | Activar push protection y proteger `main` ([pasos manuales §C](docs/pasos-manuales.md#c-github-lo-hace-quien-cree-el-repo)) | | ⬜ |
+| 0 | Organización | Cada uno: email *noreply* en Git y herramientas instaladas ([§A](docs/pasos-manuales.md#a-preparar-el-ordenador-de-cada-integrante-cada-uno-una-vez)) | Todos | ⬜ |
+| 0 | Organización | Decidir el reparto (A/B/C) | Todos | ⬜ |
+| 0 | AWS | Alerta de presupuesto + acceso al modelo de Bedrock ([§B](docs/pasos-manuales.md#b-aws-lo-hace-una-persona-en-la-cuenta-que-usemos)) | | ⬜ |
 | 1 | Captura | Inspeccionar las 3 webs: contar KIDs, revisar `robots.txt` | | ⬜ |
 | 1 | Captura | Scraper Bestinver | | ⬜ |
 | 1 | Captura | Scraper Azvalor | | ⬜ |
@@ -95,6 +104,8 @@ Leyenda: ⬜ pendiente · 🟡 en curso · ✅ hecho · ❓ falta decidir
 
 ## Riesgos y cosas a vigilar
 
+- **Repo público:** una clave subida por error queda en el historial aunque se borre. Si pasa: desactivarla en AWS
+  al momento ([docs/seguridad.md](docs/seguridad.md#si-se-sube-una-clave-por-error)). El rol de OIDC debe estar restringido a este repo y a `main`.
 - **Coste de AWS:** Aurora y ECS pueden cobrar aunque no se usen. Poner una alerta de presupuesto (AWS Budgets)
   y destruir al acabar.
 - **Las webs cambian:** si un scraper deja de encontrar enlaces, que falle con un mensaje claro.
@@ -108,6 +119,9 @@ Leyenda: ⬜ pendiente · 🟡 en curso · ✅ hecho · ❓ falta decidir
 
 _Lo más nuevo arriba. Formato: `AAAA-MM-DD · persona · qué se hizo → qué queda`._
 
-- 2026-11-22 · _(nombre)_ · Creado el repositorio: estructura de carpetas, `CLAUDE.md`, `ESTADO.md`, resumen del enunciado,
+- 2026-11-22 · Alonso · Integrantes: Alonso, Pietro y Raúl. El repo será **público** → añadidos `docs/seguridad.md`,
+  `docs/pasos-manuales.md`, workflow `secretos.yml` (gitleaks), `.gitignore` ampliado a datos, normas de seguridad en `CLAUDE.md`.
+  → Queda: subir a GitHub, pasos manuales de AWS/GitHub, decidir reparto.
+- 2026-11-22 · Alonso · Creado el repositorio: estructura de carpetas, `CLAUDE.md`, `ESTADO.md`, resumen del enunciado,
   arquitectura, glosario, registro de decisiones, plantilla de resultados, borradores de `esquema_kid.py` y `schema.sql`.
   → Queda: subir a GitHub, repartir tareas, inspeccionar las webs.

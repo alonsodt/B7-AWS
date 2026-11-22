@@ -20,9 +20,16 @@ credentials
 crash.log
 .terraform.lock.hcl.bak
 
-# --- Datos: los PDF y manifiestos van a S3, no a Git ---
+# --- Datos: los PDF, manifiestos y datos extraídos van a S3 / PostgreSQL, no a Git ---
+# (Regla del enunciado: los datos solo se exponen por la API y la app, y el repo es público.)
 datos/
 *.pdf
+*.jsonl
+*.csv
+*.parquet
+*.xlsx
+*.sqlite
+*.db
 
 # --- Python ---
 __pycache__/
